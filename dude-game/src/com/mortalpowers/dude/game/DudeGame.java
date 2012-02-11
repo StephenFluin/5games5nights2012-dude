@@ -17,12 +17,12 @@ import com.badlogic.gdx.math.Vector2;
 public class DudeGame implements com.badlogic.gdx.ApplicationListener {
 
 	private OrthographicCamera camera;
-
+	Map gameMap;
 	
 
 	@Override
 	public void create() {
-		
+		gameMap =  new Map(0,0);
 
 	}
 
@@ -43,7 +43,7 @@ public class DudeGame implements com.badlogic.gdx.ApplicationListener {
 	@Override
 	public void render() {
 		acceptInput();
-
+		gameMap.render();
 		
 
 	}
