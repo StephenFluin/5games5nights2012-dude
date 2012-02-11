@@ -1,35 +1,17 @@
 package com.mortalpowers.dude.game;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL10;
-import com.badlogic.gdx.graphics.Mesh;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.VertexAttribute;
-import com.badlogic.gdx.graphics.VertexAttributes;
-import com.badlogic.gdx.graphics.VertexAttributes.Usage;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
 
 public class DudeGame implements com.badlogic.gdx.ApplicationListener {
 
 	private OrthographicCamera camera;
-
+	private Rectangle r = null;
 	
 
 	@Override
 	public void create() {
-		
-
-	}
-
-	@Override
-	public void pause() {
-		// TODO Auto-generated method stub
-
+		Slider s = new Slider();
+		Rectangle r = new Rectangle(-1, -1, 50, 50);
 	}
 
 	public void toggleSpin() {
@@ -43,9 +25,10 @@ public class DudeGame implements com.badlogic.gdx.ApplicationListener {
 	@Override
 	public void render() {
 		acceptInput();
-
-		
-
+		if (r == null) {
+			r = new Rectangle(-1, -1, 1, 1);
+		}
+		r.render();
 	}
 
 	@Override
@@ -63,6 +46,12 @@ public class DudeGame implements com.badlogic.gdx.ApplicationListener {
 
 	@Override
 	public void dispose() {
+		
+	}
+
+	@Override
+	public void pause() {
+		// TODO Auto-generated method stub
 		
 	}
 
