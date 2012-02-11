@@ -33,8 +33,7 @@ public class DudeGame implements com.badlogic.gdx.ApplicationListener {
 
 	@Override
 	public void resize(int width, int height) {
-		float aspectRatio = (float) width / (float) height;
-		camera = new OrthographicCamera(2f * aspectRatio, 2f);
+		camera = new OrthographicCamera(800f, 480f);
 
 	}
 
