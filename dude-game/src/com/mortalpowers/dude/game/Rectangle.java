@@ -12,8 +12,10 @@ public class Rectangle extends Renderable {
 	private Mesh rectangle;
 	private float color;
 
-	public Rectangle(int xpix, int ypix, int width, int height) {
-		super(xpix, ypix);
+	public Rectangle(float x, float y, int width, int height) {
+		x = Util.convertXFromGLToBlocks(x);
+		y = Util.convertYFromGLToBlocks(y);
+		
 		this.width = width;
 		this.height = height;
 		color = Color.toFloatBits(0, 0, 255, 255);

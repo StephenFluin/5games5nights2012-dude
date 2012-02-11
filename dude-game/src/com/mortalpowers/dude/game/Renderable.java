@@ -6,13 +6,13 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Renderable {
-	int x = 0;
-	int y = 0;
+	float x = 0;
+	float y = 0;
 	Mesh mesh;
 
 	public Renderable() {}
 	
-	public Renderable(int x, int y) {
+	public Renderable(float x, float y) {
 		this.x = x;
 		this.y = y;
 	}

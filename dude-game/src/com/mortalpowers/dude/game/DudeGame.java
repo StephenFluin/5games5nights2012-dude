@@ -13,11 +13,13 @@ public class DudeGame implements com.badlogic.gdx.ApplicationListener {
 	public void create() {
 		gameMap = new Map(0, 0);
 		Slider s = new Slider();
-		r = new Rectangle(-1, -1, 1, 1);
+		r = new Rectangle(4, 0, 1, 1);
 	}
 
 	public void acceptInput() {
-
+		if(Gdx.input.justTouched()) {
+			System.out.println(Gdx.input.getX() + "x" + Gdx.input.getY());
+		}
 	}
 
 	@Override
@@ -33,7 +35,8 @@ public class DudeGame implements com.badlogic.gdx.ApplicationListener {
 
 	@Override
 	public void resize(int width, int height) {
-		camera = new OrthographicCamera(800f, 480f);
+		camera = new OrthographicCamera(Util.xBlocks, Util.yBlocks);
+		// Game has 12 blocks wide, 10 blocks high
 
 	}
 
