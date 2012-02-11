@@ -36,4 +36,14 @@ public class Rectangle extends Renderable {
 	public void setColor(int r, int g, int b, int a) {
 		color = Color.toFloatBits(r, g, b, a);
 	}
+	
+	public void setLocation(int xpix, int ypix) {
+		this.x = xpix;
+		this.y = ypix;
+	}
+	
+	public void setSize(int width, int height) {
+		this.width = width;
+		this.height = height;
+	}
 }
