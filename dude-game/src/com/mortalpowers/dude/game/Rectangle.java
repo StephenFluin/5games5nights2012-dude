@@ -11,6 +11,7 @@ public class Rectangle extends Renderable {
 	private int height;
 	private Mesh rectangle;
 	private float color;
+	private boolean dirty = true;
 
 	public Rectangle(int xpix, int ypix, int width, int height) {
 		super(xpix, ypix);
@@ -21,15 +22,17 @@ public class Rectangle extends Renderable {
 		rectangle = new Mesh(true, 4, 4,
 				new VertexAttribute(Usage.Position, 3, "a_position"),
 				new VertexAttribute(Usage.ColorPacked, 4, "a_color"));
-		rectangle.setVertices(new float[] { x, y, 0, color,
-											x+width, y, 0, color,
-											x, y+width, 0 ,color,
-											x+width, y+width, 0, color
-											});
 		rectangle.setIndices(new short[] { 0, 1, 2, 3 });
 	}
 	
 	public void render() {
+		if (dirty) {
+			rectangle.setVertices(new float[] { x, y, 0, color,
+												x+width, y, 0, color,
+												x, y+width, 0 ,color,
+												x+width, y+width, 0, color
+												});
+		}
 		rectangle.render(GL10.GL_TRIANGLE_STRIP, 0, 4);
 	}
 
@@ -40,10 +43,12 @@ public class Rectangle extends Renderable {
 	public void setLocation(int xpix, int ypix) {
 		this.x = xpix;
 		this.y = ypix;
+		dirty = true;
 	}
 	
 	public void setSize(int width, int height) {
 		this.width = width;
 		this.height = height;
+		dirty = true;
 	}
 }

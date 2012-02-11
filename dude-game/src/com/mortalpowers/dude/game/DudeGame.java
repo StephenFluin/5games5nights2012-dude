@@ -13,16 +13,17 @@ public class DudeGame implements com.badlogic.gdx.ApplicationListener {
 	public void create() {
 		gameMap = new Map(0, 0);
 		Slider s = new Slider();
-		r = new Rectangle(-1, -1, 1, 1);
+		r = new Rectangle(-1, -1, 50, 50);
 	}
 
 	public void acceptInput() {
-
+		if (Gdx.input.justTouched()) {
+			r.setLocation(Gdx.input.getX(), Gdx.input.getY());
+		}
 	}
 
 	@Override
 	public void render() {
-		 
 		acceptInput();
 		camera.update();
         camera.apply(Gdx.gl10);
