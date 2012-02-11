@@ -11,7 +11,7 @@ public class DudeGame implements com.badlogic.gdx.ApplicationListener {
 
 	@Override
 	public void create() {
-		gameMap = new Map(0, 0);
+		gameMap = new Map();
 		Slider s = new Slider();
 
 		r = new Rectangle(4, 0, 1, 1);

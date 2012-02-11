@@ -4,18 +4,17 @@ import java.util.Vector;
 
 import com.badlogic.gdx.graphics.Color;
 
-public class Map extends Renderable {
+public class Map {
 
-	public int blocksize = 50;
+
 	private Vector<Block> elements;
 	
-	public Map(int xPix, int yPix) {
-		super(xPix, yPix);
+	public Map() {
 		
 		elements = new Vector<Block>();
 		
 		// Add our first block
-		Block b = new Block(3,2);
+		Block b = new Block(5,0);
 		addGameElement(b,4,0);
 		
 		
@@ -23,9 +22,7 @@ public class Map extends Renderable {
 
 	private void addGameElement(Block b, int xBlock, int yBlock) {
 		elements.add(b);
-		b.x = xBlock * blocksize;
-		b.y = yBlock * blocksize;
-		b.setColor(Color.toFloatBits(255, 0, 0, 255));
+		b.r.setColor(255, 0, 0, 255);
 		
 	}
 	public void render() {

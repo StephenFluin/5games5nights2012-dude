@@ -5,10 +5,10 @@ public class Util {
 	static int yBlocks = 10;
 	
 	
-	public static float convertXFromGLToBlocks(float x) {
+	public static float convertXFromBlocksToGL(float x) {
 		return x-xBlocks/2;
 	}
-	public static float convertYFromGLToBlocks(float y) {
+	public static float convertYFromBlocksToGL(float y) {
 		return y-yBlocks/2;
 	}
 }
