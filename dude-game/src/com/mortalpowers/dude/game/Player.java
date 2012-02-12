@@ -14,7 +14,7 @@ public class Player {
 	float glY;
 	Mesh model;
 	/**
-	 * tallness is between 0 and 1
+	 * tallness is between 0 and 2
 	 */
 	private float tallness = 1;
 	
@@ -30,11 +30,14 @@ public class Player {
        // glX = -200;
         //glY = -400;
         
-        System.out.println("glX is " + glX + " and Y is " + glY);
+        
 	}
 	
 	public void render() {
+		Gdx.gl10.glScalef(1.0f,tallness,1.0f);
 		Gdx.gl10.glTranslatef(glX,glY,-3.0f);
+		
+		
 		model.render(GL10.GL_TRIANGLES);
 	}
 	public void setPosition(float x,float y) {
@@ -42,11 +45,12 @@ public class Player {
 		y = Util.convertYFromBlocksToGL(y);
 		glX = x;
 		glY = y;
+		System.out.println("glX is " + glX + " and Y is " + glY);
 	}
 	
 	/**
 	 * 
-	 * @param t the tallness of the player, between 0 and 1
+	 * @param t the tallness of the player, between 0 and 2
 	 */
 	public void setTallness(float t) {
 		tallness = t;
