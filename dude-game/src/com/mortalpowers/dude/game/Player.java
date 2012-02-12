@@ -10,7 +10,8 @@ import com.badlogic.gdx.graphics.Mesh;
 import com.badlogic.gdx.graphics.g3d.loaders.obj.ObjLoader;
 
 public class Player {
-	
+	float glX;
+	float glY;
 	Mesh model;
 	public Player() {
 		InputStream stream=null;
@@ -19,11 +20,22 @@ public class Player {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        setPosition(2,0);
         model = ObjLoader.loadObj(stream, true);
-        Gdx.gl10.glTranslatef(0.0f,0.0f,-3.0f);
+       // glX = -200;
+        //glY = -400;
+        
+        System.out.println("glX is " + glX + " and Y is " + glY);
 	}
 	
 	public void render() {
+		Gdx.gl10.glTranslatef(glX,glY,-3.0f);
 		model.render(GL10.GL_TRIANGLES);
+	}
+	public void setPosition(float x,float y) {
+		x = Util.convertXFromBlocksToGL(x);
+		y = Util.convertYFromBlocksToGL(y);
+		glX = x;
+		glY = y;
 	}
 }

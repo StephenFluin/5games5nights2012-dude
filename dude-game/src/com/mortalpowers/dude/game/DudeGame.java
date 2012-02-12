@@ -40,10 +40,11 @@ public class DudeGame implements com.badlogic.gdx.ApplicationListener {
         camera.apply(Gdx.gl10);
 		Gdx.graphics.getGL10().glClear(GL10.GL_COLOR_BUFFER_BIT);
 		gameMap.render();
-		player.render();
+		
 
 		r.render();
 		s.render();
+		player.render();
 	}
 
 	@Override
