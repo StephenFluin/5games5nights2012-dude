@@ -1,6 +1,7 @@
 package com.mortalpowers.dude.game;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 
 public class DudeGame implements com.badlogic.gdx.ApplicationListener {
@@ -23,7 +24,7 @@ public class DudeGame implements com.badlogic.gdx.ApplicationListener {
 	public void acceptInput() {
 		if(Gdx.input.justTouched()) {
 			System.out.println(Gdx.input.getX() + "x" + Gdx.input.getY());
-			s.setVal(2f + -1 * ((float)Gdx.input.getY()) / ((float)screenHeight));
+			s.setVal(1f + -1f * ((float)Gdx.input.getY()) / ((float)screenHeight));
 		}
 	}
 
@@ -32,6 +33,7 @@ public class DudeGame implements com.badlogic.gdx.ApplicationListener {
 		acceptInput();
 		camera.update();
         camera.apply(Gdx.gl10);
+		Gdx.graphics.getGL10().glClear(GL10.GL_COLOR_BUFFER_BIT);
 		gameMap.render();
 
 		r.render();
