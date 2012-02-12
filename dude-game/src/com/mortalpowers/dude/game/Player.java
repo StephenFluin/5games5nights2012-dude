@@ -12,6 +12,11 @@ import com.badlogic.gdx.graphics.g3d.loaders.obj.ObjLoader;
 public class Player {
 	
 	Mesh model;
+	/**
+	 * tallness is between 0 and 1
+	 */
+	private float tallness = 1;
+	
 	public Player() {
 		InputStream stream=null;
         try {
@@ -25,5 +30,13 @@ public class Player {
 	
 	public void render() {
 		model.render(GL10.GL_TRIANGLES);
+	}
+	
+	/**
+	 * 
+	 * @param t the tallness of the player, between 0 and 1
+	 */
+	public void setTallness(float t) {
+		tallness = t;
 	}
 }
