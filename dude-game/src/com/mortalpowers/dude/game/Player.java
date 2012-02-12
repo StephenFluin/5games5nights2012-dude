@@ -42,7 +42,6 @@ public class Player {
 		y = Util.convertYFromBlocksToGL(y);
 		glX = x;
 		glY = y;
-		System.out.println("glX is " + glX + " and Y is " + glY);
 	}
 	
 	public float getPositionX() {
@@ -78,12 +77,22 @@ public class Player {
 	}
 	
 	/**
-	 * Set the tallness of the player. above .5 stretches, below .5 smushes.
-	 * @param t the tallness of the player, .5 would be default.
+	 * Set the tallness of the player. Automatically maps slider between max and min.
+	 * @param t position of the slider (0-1)
 	 */
 	public void setTallness(float t) {
 		float minScale = .5f;
 		float maxScale = 1.8f;
 		tallness = t*(maxScale-minScale)+minScale;
+	}
+
+	/**
+	 * Does the player have the ability to jump
+	 * @TODO IMPLEMENT COLLISION DETECTION HERE AGAIN
+	 * @return True if they are close enough to ground or object.
+	 */
+	public boolean hasFooting() {
+		return true;
+		
 	}
 }

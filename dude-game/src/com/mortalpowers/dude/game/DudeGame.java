@@ -69,7 +69,8 @@ public class DudeGame implements com.badlogic.gdx.ApplicationListener {
 		}
 		
 		// jump!
-		if (currentSVal - previousSVal > 0.5f) {
+		if (s.increaseLag > 0.5f && player.hasFooting()) {
+			s.increaseLag = 0;
 			player.setSpeedY(0.1f);
 		}
 		
@@ -80,10 +81,10 @@ public class DudeGame implements com.badlogic.gdx.ApplicationListener {
 		}
 		
 		if (finalX == null) {
-			finalX = player.getPositionX() + player.getSpeedX();
+			finalX = player.getPositionX() + player.getSpeedX() * Gdx.graphics.getDeltaTime() * 60;
 		}
 		if (finalY == null) {
-			finalY = player.getPositionY() + player.getSpeedY();
+			finalY = player.getPositionY() + player.getSpeedY() * Gdx.graphics.getDeltaTime() * 60;
 		}
 		player.setPosition(finalX, finalY);
 	}
