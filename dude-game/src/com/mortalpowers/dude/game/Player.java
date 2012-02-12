@@ -13,6 +13,11 @@ public class Player {
 	float glX;
 	float glY;
 	Mesh model;
+	/**
+	 * tallness is between 0 and 1
+	 */
+	private float tallness = 1;
+	
 	public Player() {
 		InputStream stream=null;
         try {
@@ -37,5 +42,13 @@ public class Player {
 		y = Util.convertYFromBlocksToGL(y);
 		glX = x;
 		glY = y;
+	}
+	
+	/**
+	 * 
+	 * @param t the tallness of the player, between 0 and 1
+	 */
+	public void setTallness(float t) {
+		tallness = t;
 	}
 }
