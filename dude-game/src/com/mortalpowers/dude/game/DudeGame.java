@@ -33,7 +33,7 @@ public class DudeGame implements com.badlogic.gdx.ApplicationListener {
 		}
 		if (Gdx.input.isTouched()) {
 			s.setVal(1f + -1f * ((float)Gdx.input.getY()) / ((float)screenHeight));
-			player.setTallness(s.getVal() * 2f);
+			player.setTallness(s.getVal());
 			previousSVal = currentSVal;
 			currentSVal = s.getVal();
 		}
