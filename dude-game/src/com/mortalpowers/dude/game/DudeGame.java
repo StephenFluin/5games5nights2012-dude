@@ -12,6 +12,9 @@ public class DudeGame implements com.badlogic.gdx.ApplicationListener {
 	private Slider s = null;
 	private int screenWidth = 1;
 	private int screenHeight = 1;
+	private float previousSVal = 0;
+	private float currentSVal = 0;
+	private final float GRAVITY = 0.001f;
 
 	Player player;
 	
@@ -31,6 +34,8 @@ public class DudeGame implements com.badlogic.gdx.ApplicationListener {
 		if (Gdx.input.isTouched()) {
 			s.setVal(1f + -1f * ((float)Gdx.input.getY()) / ((float)screenHeight));
 			player.setTallness(s.getVal() * 2f);
+			previousSVal = currentSVal;
+			currentSVal = s.getVal();
 		}
 	}
 
@@ -52,6 +57,8 @@ public class DudeGame implements com.badlogic.gdx.ApplicationListener {
 	public void updatePlayerPosition() {
 		float proposedX = player.getPositionX() + player.getSpeedX();
 		float proposedY = player.getPositionY() + player.getSpeedY();
+		Float finalX = null;
+		Float finalY = null;
 		
 		if (proposedX + player.getWidth() > 12) {
 			player.setSpeedX(-1 * Math.abs(player.getSpeedX()));
@@ -61,8 +68,23 @@ public class DudeGame implements com.badlogic.gdx.ApplicationListener {
 			player.setSpeedX(Math.abs(player.getSpeedX()));
 		}
 		
-		float finalX = player.getPositionX() + player.getSpeedX();
-		float finalY = player.getPositionY() + player.getSpeedY();
+		// jump!
+		if (currentSVal - previousSVal > 0.5f) {
+			player.setSpeedY(0.1f);
+		}
+		
+		if (proposedY > 0) {
+			player.setSpeedY(player.getSpeedY() - GRAVITY);
+		} else if (proposedY < 0) {
+			finalY = 0f;
+		}
+		
+		if (finalX == null) {
+			finalX = player.getPositionX() + player.getSpeedX();
+		}
+		if (finalY == null) {
+			finalY = player.getPositionY() + player.getSpeedY();
+		}
 		player.setPosition(finalX, finalY);
 	}
 
