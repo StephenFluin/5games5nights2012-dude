@@ -34,8 +34,9 @@ public class Player {
 	}
 	
 	public void render() {
-		Gdx.gl10.glScalef(1.0f,tallness,1.0f);
 		Gdx.gl10.glTranslatef(glX,glY,-3.0f);
+		Gdx.gl10.glScalef(1.0f,tallness,1.0f);
+		
 		
 		
 		model.render(GL10.GL_TRIANGLES);
