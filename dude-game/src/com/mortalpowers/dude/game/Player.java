@@ -78,10 +78,12 @@ public class Player {
 	}
 	
 	/**
-	 * 
-	 * @param t the tallness of the player, between 0 and 2
+	 * Set the tallness of the player. above .5 stretches, below .5 smushes.
+	 * @param t the tallness of the player, .5 would be default.
 	 */
 	public void setTallness(float t) {
-		tallness = t;
+		float minScale = .5f;
+		float maxScale = 1.8f;
+		tallness = t*(maxScale-minScale)+minScale;
 	}
 }
