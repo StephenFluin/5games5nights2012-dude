@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.Mesh;
 import com.badlogic.gdx.graphics.g3d.loaders.obj.ObjLoader;
@@ -20,12 +21,10 @@ public class Player {
 	
 	public Player() {
 		InputStream stream=null;
-        try {
-            stream = new FileInputStream(Gdx.files.internal("data/sphere.obj").path());
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+       	stream = Gdx.files.internal("data/sphere.obj").read();
+
         setPosition(2,0);
+        
         model = ObjLoader.loadObj(stream, true);
        // glX = -200;
         //glY = -400;
