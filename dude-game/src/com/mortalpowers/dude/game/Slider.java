@@ -21,6 +21,8 @@ public class Slider {
 	}
 	
 	public void setVal(float v) {
+		if (v > 1) v = 1;
+		if (v < 0) v = 0;
 		slide.setLocation(0, val * (10f-0.25f));
 		this.val = v;
 	}
