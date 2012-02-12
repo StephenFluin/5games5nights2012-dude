@@ -30,9 +30,12 @@ public class Rectangle {
 
 	public void render() {
 		if (dirty) {
-			rectangle.setVertices(new float[] { x, y, 0, color, x + width, y,
-					0, color, x, y + width, 0, color, x + width, y + width, 0,
-					color });
+			rectangle.setVertices(new float[] { x, y, 0, color,
+					x + width, y, 0, color,
+					x, y + height, 0, color,
+					x + width, y + height, 0, color });
+			System.out.println("Drawing rectangle: " + x + "," + y + "+" + width + "x" + height);
+			dirty = false;
 		}
 		rectangle.render(GL10.GL_TRIANGLE_STRIP, 0, 4);
 	}
