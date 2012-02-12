@@ -9,11 +9,13 @@ public class DudeGame implements com.badlogic.gdx.ApplicationListener {
 	Map gameMap;
 	private Rectangle r = null;
 
+	Player player;
+	
 	@Override
 	public void create() {
 		gameMap = new Map();
 		Slider s = new Slider();
-
+		player = new Player();
 		r = new Rectangle(4, 0, 1, 1);
 	}
 
@@ -30,6 +32,7 @@ public class DudeGame implements com.badlogic.gdx.ApplicationListener {
 		camera.update();
         camera.apply(Gdx.gl10);
 		gameMap.render();
+		player.render();
 
 		r.render();
 	}
