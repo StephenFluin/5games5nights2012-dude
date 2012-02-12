@@ -24,6 +24,8 @@ public class DudeGame implements com.badlogic.gdx.ApplicationListener {
 	public void acceptInput() {
 		if(Gdx.input.justTouched()) {
 			System.out.println(Gdx.input.getX() + "x" + Gdx.input.getY());
+		}
+		if (Gdx.input.isTouched()) {
 			s.setVal(1f + -1f * ((float)Gdx.input.getY()) / ((float)screenHeight));
 		}
 	}
