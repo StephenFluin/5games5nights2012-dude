@@ -30,13 +30,14 @@ public class DudeGame implements com.badlogic.gdx.ApplicationListener {
 		}
 		if (Gdx.input.isTouched()) {
 			s.setVal(1f + -1f * ((float)Gdx.input.getY()) / ((float)screenHeight));
-			player.setTallness(s.getVal());
+			player.setTallness(s.getVal() * 2f);
 		}
 	}
 
 	@Override
 	public void render() {
 		acceptInput();
+		updatePlayerPosition();
 		camera.update();
         camera.apply(Gdx.gl10);
 		Gdx.graphics.getGL10().glClear(GL10.GL_COLOR_BUFFER_BIT);
@@ -46,6 +47,23 @@ public class DudeGame implements com.badlogic.gdx.ApplicationListener {
 		r.render();
 		s.render();
 		player.render();
+	}
+	
+	public void updatePlayerPosition() {
+		float proposedX = player.getPositionX() + player.getSpeedX();
+		float proposedY = player.getPositionY() + player.getSpeedY();
+		
+		if (proposedX + player.getWidth() > 12) {
+			player.setSpeedX(-1 * Math.abs(player.getSpeedX()));
+		}
+		
+		if (proposedX < 0) {
+			player.setSpeedX(Math.abs(player.getSpeedX()));
+		}
+		
+		float finalX = player.getPositionX() + player.getSpeedX();
+		float finalY = player.getPositionY() + player.getSpeedY();
+		player.setPosition(finalX, finalY);
 	}
 
 	@Override
