@@ -18,7 +18,7 @@ public class Slider {
 		slide.render();
 		bg.render();
 		
-		System.out.println("lag is " + increaseLag);
+		
 		if(increaseLag >0) {
 			increaseLag -= .5 * Gdx.graphics.getDeltaTime();
 		}
