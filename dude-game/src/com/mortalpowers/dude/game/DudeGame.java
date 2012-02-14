@@ -51,8 +51,8 @@ public class DudeGame implements com.badlogic.gdx.ApplicationListener {
 	public void updatePlayerPosition() {
 		gameMap.checkForCollisions(player);
 		
-		float proposedX = player.getPositionX() + player.getSpeedX();
-		float proposedY = player.getPositionY() + player.getSpeedY();
+		float proposedX = player.getPositionX() + player.getSpeedX() * Gdx.graphics.getDeltaTime() * 60;
+		float proposedY = player.getPositionY() + player.getSpeedY() * Gdx.graphics.getDeltaTime() * 60;
 		Float finalX = null;
 		Float finalY = null;
 		
@@ -68,12 +68,18 @@ public class DudeGame implements com.badlogic.gdx.ApplicationListener {
 		if (s.increaseLag > 0.5f && player.hasFooting()) {
 			s.increaseLag = 0;
 			player.setSpeedY(0.1f);
+			// Update calculation to prevent getting stuck above roof.
+			proposedY = player.getPositionY() + player.getSpeedY() * Gdx.graphics.getDeltaTime() * 60;
 		}
 		
 		if (proposedY > 0) {
 			player.setSpeedY(player.getSpeedY() - GRAVITY);
 		} else if (proposedY < 0) {
 			finalY = 0f;
+		}
+		if (proposedY + player.getHeight() >  10) {
+			player.setSpeedY(0f);
+			
 		}
 		
 		if (finalX == null) {
