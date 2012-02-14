@@ -20,7 +20,7 @@ public class Slider {
 		
 		
 		if(increaseLag >0) {
-			increaseLag -= .5 * Gdx.graphics.getDeltaTime();
+			increaseLag -= .6 * Gdx.graphics.getDeltaTime();
 		}
 	}
 	

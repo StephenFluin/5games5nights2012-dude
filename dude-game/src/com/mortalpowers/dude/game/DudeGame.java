@@ -80,6 +80,8 @@ public class DudeGame implements com.badlogic.gdx.ApplicationListener {
 			player.setSpeedY(player.getSpeedY() - GRAVITY);
 		} else if (proposedY < 0) {
 			finalY = 0f;
+			player.setSpeedY(0);
+			s.increaseLag = 0;
 		}
 		if (proposedY + player.getHeight() >  10) {
 			player.setSpeedY(0f);

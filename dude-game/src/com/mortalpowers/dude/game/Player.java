@@ -92,7 +92,12 @@ public class Player {
 	 * @return True if they are close enough to ground or object.
 	 */
 	public boolean hasFooting() {
-		return true;
+		if(Math.abs(getSpeedY()) <= 0.01) {
+			return true;
+		} else {
+			System.out.println(getSpeedY());
+			return false;
+		}
 		
 	}
 }
