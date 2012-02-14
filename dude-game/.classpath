@@ -10,5 +10,6 @@
 			<attribute name="javadoc_location" value="file:/var/www/gdx/"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="libs/phys2d-060408.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

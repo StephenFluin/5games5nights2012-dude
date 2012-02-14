@@ -26,16 +26,16 @@ public class BoundingBox {
 		boolean bottomLeftCollision = false;
 		boolean bottomRightCollision = false;
 		if (this.x1 >= other.x1 && this.x1 <= other.x2 && this.y1 >= other.y1 && this.y1 <= other.y2) {
-			topLeftCollision = true;
-		}
-		if (this.x2 >= other.x1 && this.x2 <= other.x2 && this.y1 >= other.y1 && this.y1 <= other.y2) {
-			topRightCollision = true;
-		}
-		if (this.x1 >= other.x1 && this.x1 <= other.x2 && this.y2 >= other.y1 && this.y2 <= other.y2) {
 			bottomLeftCollision = true;
 		}
-		if (this.x2 >= other.x1 && this.x2 <= other.x2 && this.y2 >= other.y1 && this.y2 <= other.y2) {
+		if (this.x2 >= other.x1 && this.x2 <= other.x2 && this.y1 >= other.y1 && this.y1 <= other.y2) {
 			bottomRightCollision = true;
+		}
+		if (this.x1 >= other.x1 && this.x1 <= other.x2 && this.y2 >= other.y1 && this.y2 <= other.y2) {
+			topLeftCollision = true;
+		}
+		if (this.x2 >= other.x1 && this.x2 <= other.x2 && this.y2 >= other.y1 && this.y2 <= other.y2) {
+			topRightCollision = true;
 		}
 		int collisionCount = 0;
 		if (topLeftCollision) { collisionCount++; }
