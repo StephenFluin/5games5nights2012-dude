@@ -21,6 +21,7 @@ public class DudeGame implements com.badlogic.gdx.ApplicationListener {
 	public void create() {
 		gameMap = new Map();
 		player = new Player();
+		gameMap.setPlayer(player);
 		s = new Slider();
 	}
 
@@ -39,7 +40,6 @@ public class DudeGame implements com.badlogic.gdx.ApplicationListener {
 	@Override
 	public void render() {
 		acceptInput();
-		updatePlayerPosition();
 		camera.update();
         camera.apply(Gdx.gl10);
 		Gdx.graphics.getGL10().glClear(GL10.GL_COLOR_BUFFER_BIT);

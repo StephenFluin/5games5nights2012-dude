@@ -1,11 +1,12 @@
 package com.mortalpowers.dude.game;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.InputStream;
 
+import net.phys2d.math.Vector2f;
+import net.phys2d.raw.Body;
+import net.phys2d.raw.shapes.Box;
+
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.Mesh;
 import com.badlogic.gdx.graphics.g3d.loaders.obj.ObjLoader;
@@ -20,6 +21,7 @@ public class Player {
 	private float tallness = 2;
 	private float speedX = 0.01f;
 	private float speedY = 0;
+	private Body body;
 	
 	public Player() {
 		InputStream stream=null;
@@ -28,9 +30,23 @@ public class Player {
         setPosition(2,0);
         
         model = ObjLoader.loadObj(stream, true);
+        
+        body = new Body(new Box(1, 2), 0.01f);
+        body.setPosition(2, 0);
+        body.setDamping(0);
+        body.setRotDamping(100);
+        body.setRestitution(1f);
+        body.setUserData(this);
+        body.addForce(new Vector2f(30, 0));
+        body.setMaxVelocity(100, 100);
+	}
+	
+	public Body getBody() {
+		return body;
 	}
 	
 	public void render() {
+		setPosition(body.getPosition().getX(), body.getPosition().getY());
 		Gdx.gl10.glTranslatef(glX,glY,-3.0f);
 		Gdx.gl10.glScalef(1.0f,tallness,1.0f);
 		
@@ -38,6 +54,7 @@ public class Player {
 	}
 	
 	public void setPosition(float x,float y) {
+		System.out.println("Moved to " + x + "," + y);
 		x = Util.convertXFromBlocksToGL(x);
 		y = Util.convertYFromBlocksToGL(y);
 		glX = x;
