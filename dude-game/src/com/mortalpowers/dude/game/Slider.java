@@ -18,7 +18,6 @@ public class Slider {
 		slide.render();
 		bg.render();
 		
-		
 		if(increaseLag >0) {
 			increaseLag -= .6 * Gdx.graphics.getDeltaTime();
 		}

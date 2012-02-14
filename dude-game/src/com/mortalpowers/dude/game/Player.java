@@ -44,6 +44,10 @@ public class Player {
 		glY = y;
 	}
 	
+	public BoundingBox getBoundingBox() {
+		return new BoundingBox(this.getPositionX(), this.getPositionY(), this.getWidth(), this.getHeight());
+	}
+	
 	public float getPositionX() {
 		return Util.convertXFromGLToBlocks(glX);
 	}
