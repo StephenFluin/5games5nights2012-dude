@@ -8,7 +8,6 @@ public class DudeGame implements com.badlogic.gdx.ApplicationListener {
 
 	private OrthographicCamera camera;
 	Map gameMap;
-	private Rectangle r = null;
 	private Slider s = null;
 	private int screenWidth = 1;
 	private int screenHeight = 1;
@@ -23,8 +22,6 @@ public class DudeGame implements com.badlogic.gdx.ApplicationListener {
 		gameMap = new Map();
 		player = new Player();
 		s = new Slider();
-
-		r = new Rectangle(4, 0, 1, 1);
 	}
 
 	public void acceptInput() {
@@ -47,14 +44,13 @@ public class DudeGame implements com.badlogic.gdx.ApplicationListener {
         camera.apply(Gdx.gl10);
 		Gdx.graphics.getGL10().glClear(GL10.GL_COLOR_BUFFER_BIT);
 		gameMap.render();
-		
-
-		r.render();
 		s.render();
 		player.render();
 	}
 	
 	public void updatePlayerPosition() {
+		gameMap.checkForCollisions(player);
+		
 		float proposedX = player.getPositionX() + player.getSpeedX();
 		float proposedY = player.getPositionY() + player.getSpeedY();
 		Float finalX = null;

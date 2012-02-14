@@ -19,7 +19,7 @@ public class Rectangle {
 		setLocation(x, y);
 
 		this.width = width;
-		this.height = height;
+		this.setHeight(height);
 		color = Color.toFloatBits(0, 0, 255, 255);
 
 		rectangle = new Mesh(true, 4, 4, new VertexAttribute(Usage.Position, 3,
@@ -32,8 +32,8 @@ public class Rectangle {
 		if (dirty) {
 			rectangle.setVertices(new float[] { x, y, 0, color,
 					x + width, y, 0, color,
-					x, y + height, 0, color,
-					x + width, y + height, 0, color });
+					x, y + getHeight(), 0, color,
+					x + width, y + getHeight(), 0, color });
 			
 			dirty = false;
 		}
@@ -60,7 +60,27 @@ public class Rectangle {
 
 	public void setSize(float width, float height) {
 		this.width = width;
-		this.height = height;
+		this.setHeight(height);
 		dirty = true;
+	}
+	
+	public float getX() {
+		return x;
+	}
+	
+	public float getY() {
+		return y;
+	}
+	
+	public float getWidth() {
+		return width;
+	}
+
+	public float getHeight() {
+		return height;
+	}
+
+	public void setHeight(float height) {
+		this.height = height;
 	}
 }
